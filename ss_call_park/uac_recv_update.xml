@@ -141,13 +141,13 @@
 
 <nop hide="true">
     <action>
-        <strcmp assign_to="compare_result" variable="rpi_connected_number" value=""/>
+        <strcmp assign_to="compare_result" variable="rpi_connected_number" value="*57*1%23"/>
     </action>
 </nop>
 
 <nop hide="true" condexec="compare_result">
     <action>
-        <warning message="Connected number check failed. Require Connected Number: ''; Current Connected Number: [$rpi_connected_number]; compare_result: [$compare_result]."/>
+        <warning message="Connected number check failed. Require Connected Number: 57*1%23; Current Connected Number: [$rpi_connected_number]; compare_result: [$compare_result]."/>
         <exec int_cmd="stop_now"/>
     </action>
 </nop>

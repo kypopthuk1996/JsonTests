@@ -43,7 +43,7 @@
     [last_To:]
     [last_Call-ID:]
     [last_CSeq:]
-    Contact: <sip:[$number][local_ip]:[local_port];user=phone>
+    Contact: <sip:[$number]@[local_ip]:[local_port];user=phone>
     Content-Type: application/sdp
     Content-Length: [len]
 
@@ -78,7 +78,7 @@
     [last_Call-ID:]
     [last_CSeq:]
     Content-Type: application/sdp
-    Contact: <sip:[$number][local_ip]:[local_port];user=phone>
+    Contact: <sip:[$number]@[local_ip]:[local_port];user=phone>
     Content-Length: [len]
 
     v=0

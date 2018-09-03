@@ -69,7 +69,7 @@
               "Commands": [
                 {
                   "SourceFile": "message_test/send_message.xml",
-                  "Options": "-m 1 -set CDPN %%1.Number%% -set CDPNDOM %%1.SipDomain%% -set DISPLAY_NAME \"Send Simple MESSAGE test\"",
+                  "Options": "-m 1 -set CDPN 109 -set CDPNDOM %%1.SipDomain%% -set DISPLAY_NAME \"Send Simple MESSAGE test\"",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "120s"
@@ -151,14 +151,14 @@
               "Commands": [
                 {
                   "SourceFile": "message_test/send_rfc3994_message.xml",
-                  "Options": "-m 1 -set CDPN %%1.Number%% -set CDPNDOM %%1.SipDomain%% -set DISPLAY_NAME \"Send MESSAGE rfc3994 test\"",
+                  "Options": "-m 1 -set CDPN 109 -set CDPNDOM %%1.SipDomain%% -set DISPLAY_NAME \"Send MESSAGE rfc3994 test\"",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "120s"
                 },
                 {
                   "SourceFile": "message_test/send_message_with_unkn_cont_type.xml",
-                  "Options": "-m 1 -set CDPN %%1.Number%% -set CDPNDOM %%1.SipDomain%% -set DISPLAY_NAME \"Send MESSAGE with unknown content-type\"",
+                  "Options": "-m 1 -set CDPN 109 -set CDPNDOM %%1.SipDomain%% -set DISPLAY_NAME \"Send MESSAGE with unknown content-type\"",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "120s"
@@ -196,7 +196,7 @@
               "Commands": [
                 {
                   "SourceFile": "message_test/uac_message_retrans.xml",
-                  "Options": "-m 1 -set CDPN %%1.Number%% -set CDPNDOM %%1.SipDomain%% -nr",
+                  "Options": "-m 1 -set CDPN 109 -set CDPNDOM %%1.SipDomain%% -nr",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "120s"

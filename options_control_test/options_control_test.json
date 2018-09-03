@@ -29,7 +29,6 @@
     {}
   ],
   "PreConf": [
-    "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 2"
   ],
   "PostConf": [
     "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 0",
@@ -46,6 +45,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "UAS_RECV_OPTIONS",
               "Commands": [
                 {
@@ -60,7 +60,14 @@
           ]
         },
         {
-          "Sleep": 3
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 15"
+          ]
+        },
+        {
+          "WaitBackGroundUA": {
+            "timeout": 15
+          }
         },
         {
           "StartUA": [
@@ -79,14 +86,6 @@
               ]
             }
           ]
-        },
-        {
-          "SendSSHCommand": [
-            "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 15"
-          ]
-        },
-        {
-          "Sleep": 5
         },
         {
           "StartUA": [
@@ -136,6 +135,83 @@
                 }
               ]
             }
+          ]
+        },
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 0"
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "test_options_control_period",
+      "Description": "pass",
+      "TestProcedure": [
+        {
+          "Sleep": 2
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "User",
+              "UserId": 0,
+              "WriteStat": true,
+              "BackGround": true,
+              "Name": "UAS_RECV_OPTIONS",
+              "Commands": [
+                {
+                  "SourceFile": "options_control_test/uas_recv_two_options.xml",
+                  "Options": "-m 1 -aa",
+                  "SippType": "uas",
+                  "NeedAuth": true,
+                  "Timeout": "60s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sleep": 1
+        },
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 32"
+          ]
+        },
+        {
+          "WaitBackGroundUA": {
+            "timeout": 60
+          }
+        },
+        {
+          "CheckDifference": [
+            {
+              "Difference": 32000,
+              "CompareMode": "inside_ua",
+              "SearchMode": "inside_call",
+              "Calls": [
+                1
+              ],
+              "UA": "user:0",
+              "Msg": [
+                {
+                  "MsgType": "request",
+                  "Method": "OPTIONS",
+                  "Code": null
+                },
+                {
+                  "MsgType": "request",
+                  "Method": "OPTIONS",
+                  "Code": null
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/sip/user/set sip.group %%0.Number%%@%%0.SipDomain%% options_control 0"
           ]
         }
       ]
