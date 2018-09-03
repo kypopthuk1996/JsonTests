@@ -160,7 +160,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -d 2000",
+                  "Options": "-m 1 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -d 2000 -set HANDLE_UNEXPECTED_MSG true",
                   "NeedAuth": true,
                   "SippType": "uac",
                   "Timeout": "20s"
