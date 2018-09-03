@@ -277,6 +277,7 @@
           "CheckDifference": [
             {
               "Difference": 10000,
+              "MaxError": 0.5,
               "CompareMode": "inside_ua",
               "SearchMode": "inside_call",
               "Calls": [
@@ -401,6 +402,7 @@
           "CheckDifference": [
             {
               "Difference": 12000,
+              "MaxError": 0.5,
               "CompareMode": "inside_ua",
               "SearchMode": "inside_call",
               "Calls": [
