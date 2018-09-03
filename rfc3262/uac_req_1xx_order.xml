@@ -56,9 +56,7 @@
 
 <recv response="100"></recv>
 <recv response="181"></recv>
-<recv response="183"></recv>
 <recv response="180"></recv>
-<recv response="183"></recv>
 <recv response="200" auth="true">
     <action>
         <!--Забрали CSeq -->

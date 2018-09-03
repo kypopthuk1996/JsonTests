@@ -80,37 +80,6 @@
 </nop>
 
 
-<send>
-<![CDATA[
-    SIP/2.0 183 Session Progress
-    Via:[$inv_via]
-    From:[$inv_from]
-    To:[$inv_to];tag=[$local_tag]
-    Call-ID:[$inv_call_id]
-    CSeq: [$inv_cseq] INVITE
-    Require: 100rel
-    Rseq: [cseq]
-    Contact: <sip:[$number][local_ip]:[local_port]>
-    Content-Length: [len]
-]]>
-</send>
-
-
-<recv request="PRACK">
-</recv>
-
-<send>
-<![CDATA[
-    SIP/2.0 200 OK
-    [last_Via:]
-    [last_From:]
-    [last_To:]
-    [last_Call-ID:]
-    [last_CSeq:]
-    Content-Length: 0
-]]>
-</send>
-
 <nop>
   <action>
      <exec rtp_stream="[media_path]/test.ulaw,-1,0" />
@@ -167,38 +136,6 @@
      <exec rtp_stream="[media_path]/test.alaw,-1,8" />
  </action>
 </nop>
-
-
-<send>
-<![CDATA[
-    SIP/2.0 183 Session Progress
-    Via:[$inv_via]
-    From:[$inv_from]
-    To:[$inv_to];tag=[$local_tag]
-    Call-ID:[$inv_call_id]
-    CSeq: [$inv_cseq] INVITE
-    Require: 100rel
-    Rseq: [cseq]
-    Contact: <sip:[$number][local_ip]:[local_port]>
-    Content-Length: [len]
-]]>
-</send>
-
-
-<recv request="PRACK">
-</recv>
-
-<send>
-<![CDATA[
-    SIP/2.0 200 OK
-    [last_Via:]
-    [last_From:]
-    [last_To:]
-    [last_Call-ID:]
-    [last_CSeq:]
-    Content-Length: 0
-]]>
-</send>
 
 <send retrans="500">
 <![CDATA[
