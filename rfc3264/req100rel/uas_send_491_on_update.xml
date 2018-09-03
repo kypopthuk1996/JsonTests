@@ -21,7 +21,7 @@
         <ereg regexp="o=([^ ]+)\s([^ ]+)\s([^ ]+)" check_it="true" search_in="body" assign_to="dummy,dummy,first_ss_id,first_ss_vrs"/>
         <todouble assign_to="first_ss_vrs" variable="first_ss_vrs"/>
         <todouble assign_to="first_ss_id" variable="first_ss_id"/>
-        <ereg regexp="sip:([^@]+)?@?([^:;>]+)(:[^;>]+)?([^>]+)?" search_in="hdr" header="Contact:" check_it="true" assign_to="contact,dummy,ip,dummy,dummy"/>
+        <ereg regexp="sip:([^@]@)?[^>]+" search_in="hdr" header="Contact:" check_it="true" assign_to="contact"/>
     </action>
 </recv>
 
@@ -89,12 +89,6 @@
     Content-Length: [len]
 ]]>
 </send>
-
-<nop hide="true">
-    <action>
-        <setdest host="[$ip]" port="[remote_port]" protocol="UDP" />
-    </action>
-</nop>
 
 <send retrans="500">
 <![CDATA[

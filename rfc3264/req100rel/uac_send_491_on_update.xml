@@ -146,12 +146,6 @@
     </action>
  </recv>
 
-<nop hide="true">
-    <action>
-        <setdest host="[$ip]" port="[remote_port]" protocol="UDP" />
-    </action>
-</nop>
-
 <send crlf="true">
 <![CDATA[
     ACK sip:[$cdpn]@[remote_ip]:[remote_port] SIP/2.0
