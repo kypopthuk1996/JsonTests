@@ -66,7 +66,7 @@
               "Name": "UAC_TEST",
               "Commands": [
                 {
-                  "SourceFile": "example/uac_recv_bye.xml",
+                  "SourceFile": "simple_ua/uac_recv_bye.xml",
                   "Options": "-m 1 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%%",
                   "SippType": "uac",
                   "NeedAuth": true,
