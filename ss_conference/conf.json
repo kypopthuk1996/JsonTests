@@ -337,7 +337,7 @@
               "Commands": [
                 {
                   "SourceFile": "ivr/uac_send_dtmf_and_send_bye.xml",
-                  "Options": "-m 1 -set CDPN b001 -set CDPNDOM %%0.SipDomain%% -d 3000 -set DIGITS %%ROOM_NUMBER%%",
+                  "Options": "-m 1 -set CDPN A001 -set CDPNDOM %%0.SipDomain%% -d 3000 -set DIGITS %%ROOM_NUMBER%%",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "80s"
@@ -351,7 +351,7 @@
               "Commands": [
                 {
                   "SourceFile": "ivr/uac_send_dtmf_and_send_bye.xml",
-                  "Options": "-m 1 -set CDPN b001 -set CDPNDOM %%0.SipDomain%% -d 3000 -set DIGITS %%ROOM_NUMBER%%",
+                  "Options": "-m 1 -set CDPN A001 -set CDPNDOM %%0.SipDomain%% -d 3000 -set DIGITS %%ROOM_NUMBER%%",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "80s"
