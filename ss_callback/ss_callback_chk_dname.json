@@ -81,7 +81,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -133,7 +133,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -185,7 +185,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -237,7 +237,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -295,7 +295,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -355,7 +355,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -415,7 +415,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -475,7 +475,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%%",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set CHK_CONNECTED_NUMBER %%0.Number%% -set CHK_CONNECTED_NAME %%ALIAS_DNAME_FOR_B%% -set RECV_ADDR_UPDATE true",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -540,7 +540,7 @@
                 },
                 {
                   "SourceFile": "ss_callback/uas_send_dtmf.xml",
-                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%% -set WOUT_ADDR_UPDATE true",
+                  "Options": "-m 1 -set CB_DIGITS *%%USER_PIN%%*%%0.Number%%#  -set CHK_DNAME Callback -set CHK_CGPN %%1.Number%%",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "60s"
