@@ -2,7 +2,7 @@
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 <scenario name = "IVR UAC SEND DTMF">
 
-<Global variables="CDPNDOM,CGPNDOM,CDPN,DISPLAY_NAME,WOUT_DNAME,DIGITS" />
+<Global variables="CDPNDOM,CGPNDOM,CDPN,DISPLAY_NAME,WOUT_DNAME,DIGITS,CHK_CONNECTED_NAME,CHK_CONNECTED_NUMBER,RECV_ADDR_UPDATE" />
     <nop hide="true">
     <action>
         <assignstr assign_to="cgpn_dom" value="[$CGPNDOM]"/>
@@ -33,6 +33,7 @@
     From: [$display_name]<sip:[service]@[$cgpn_dom]>;tag=[$local_tag]
     To: "[$cdpn]" <sip:[$cdpn]@[$cdpn_dom]>
     Call-ID: [call_id]
+    Allow: INVITE, ACK, CANCEL, BYE, UPDATE
     CSeq: [cseq] INVITE
     Contact: <sip:[service]@[local_ip]:[local_port]>
     Max-Forwards: 70
@@ -51,8 +52,6 @@
 ]]>
 </send>
 <recv response="100" optional="true"></recv>
-
-
 
 
 <!--Если получено 401 идем на label auth_invite и отсылаем INVITE c аутентификацией -->
@@ -106,6 +105,9 @@
     </action>
 </nop>
 
+<nop next="recv_addr_update" test="RECV_ADDR_UPDATE"/>
+
+<label id="recv_bye"/> 
 
 <recv request="BYE"></recv>
 
@@ -145,6 +147,7 @@
     To: "[$cdpn]" <sip:[$cdpn]@[$cdpn_dom]>
     [last_call-id]
     CSeq: [cseq] INVITE
+    Allow: INVITE, ACK, CANCEL, BYE, UPDATE
     Contact: <sip:[service]@[local_ip]:[local_port]>
     [authentication]
     Max-Forwards: 70
@@ -163,6 +166,57 @@
 ]]>
 </send>
 
+<label id="recv_addr_update"/>
+
+<recv request="UPDATE">
+    <action>
+        <ereg regexp="(\"([^\"]+)\")?\s?<sip:([^;@]+)" search_in="hdr" header="Remote-Party-ID:" assign_to="dummy,dummy,connected_name,connected_number"/>
+    </action>
+</recv>
+
+<send next="recv_bye" crlf="true">
+<![CDATA[
+    SIP/2.0 200 OK
+    [last_Via:]
+    [last_From:]
+    [last_To:]
+    [last_Call-ID:]
+    [last_CSeq:]
+    Content-Length: 0
+]]>
+</send>
+
 <label id="end"/>
+
+<!-- Check connected display name -->
+
+<nop hide="true" condexec="CHK_CONNECTED_NAME">
+    <action>
+        <strcmp assign_to="compare_result" variable="CHK_CONNECTED_NAME" variable2="connected_name"/>
+    </action>
+</nop>
+
+<nop hide="true" condexec="compare_result">
+    <action>
+        <warning message="Wrong display name in 200 response. Require display name: [$CHK_CONNECTED_NAME]; display name in response: [$connected_name]"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
+<!-- Check connected number -->
+
+<nop hide="true" condexec="CHK_CONNECTED_NUMBER">
+    <action>
+        <strcmp assign_to="compare_result" variable="CHK_CONNECTED_NUMBER" variable2="connected_number"/>
+    </action>
+</nop>
+
+<nop hide="true" condexec="compare_result">
+    <action>
+        <warning message="Wrong number in 200 response. Require number: [$CHK_CONNECTED_NUMBER]; number in response: [$connected_number]"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
 <pause milliseconds="2000"/>
 </scenario>

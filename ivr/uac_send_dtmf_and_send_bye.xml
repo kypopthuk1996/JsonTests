@@ -2,8 +2,9 @@
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 <scenario name = "IVR UAC SEND DTMF">
 
-<Global variables="CDPNDOM,CGPNDOM,CDPN,DISPLAY_NAME,WOUT_DNAME,DIGITS" />
-    <nop hide="true">
+<Global variables="CDPNDOM,CGPNDOM,CDPN,DISPLAY_NAME,WOUT_DNAME,DIGITS,CHK_CONNECTED_NAME,CHK_CONNECTED_NUMBER,RECV_ADDR_UPDATE" />
+<Reference variables="RECV_ADDR_UPDATE"/>
+<nop hide="true">
     <action>
         <assignstr assign_to="cgpn_dom" value="[$CGPNDOM]"/>
         <assignstr assign_to="cdpn_dom" value="[$CDPNDOM]"/>
@@ -12,19 +13,19 @@
         <assignstr assign_to="display_name" value="\"[$DISPLAY_NAME]\" "/>
         <assignstr assign_to="local_tag" value="[call_number][pid]"/>
     </action>
-    </nop>
+</nop>
 
-    <nop hide="true" condexec="DISPLAY_NAME" condexec_inverse="true">
-        <action>
-            <assignstr assign_to="display_name" value="\"IVR UAC SEND DTMF\" " />
-        </action>
-    </nop>
+<nop hide="true" condexec="DISPLAY_NAME" condexec_inverse="true">
+    <action>
+        <assignstr assign_to="display_name" value="\"IVR UAC SEND DTMF\" " />
+    </action>
+</nop>
 
-    <nop hide="true" condexec="WOUT_DNAME">
-        <action>
-            <assignstr assign_to="display_name" value="" />
-        </action>
-    </nop>
+<nop hide="true" condexec="WOUT_DNAME">
+    <action>
+        <assignstr assign_to="display_name" value="" />
+    </action>
+</nop>
 
 <send>
 <![CDATA[
@@ -33,6 +34,7 @@
     From: [$display_name]<sip:[service]@[$cgpn_dom]>;tag=[$local_tag]
     To: "[$cdpn]" <sip:[$cdpn]@[$cdpn_dom]>
     Call-ID: [call_id]
+    Allow: INVITE, ACK, CANCEL, BYE, UPDATE
     CSeq: [cseq] INVITE
     Contact: <sip:[service]@[local_ip]:[local_port]>
     Max-Forwards: 70
@@ -106,6 +108,8 @@
     </action>
 </nop>
 
+<nop next="recv_addr_update" test="RECV_ADDR_UPDATE"/>
+
 <pause milliseconds="5000"/>
 
 <nop hide="true">
@@ -113,6 +117,8 @@
           <exec rtp_stream="[media_path]/test.alaw,-1,8" />
      </action>
 </nop>
+
+<label id="send_bye"/> 
 
 <pause milliseconds="60000"/>
 
@@ -130,7 +136,27 @@
 
 <recv response="200" next="end"/>
 
-<!--Отправка INVITE c аутентификацией -->
+
+<label id="recv_addr_update"/>
+
+<recv request="UPDATE">
+    <action>
+        <ereg regexp="(\"([^\"]+)\")?\s?<sip:([^;@]+)" search_in="hdr" header="Remote-Party-ID:" assign_to="dummy,dummy,connected_name,connected_number"/>
+    </action>
+</recv>
+
+<send next="send_bye" crlf="true">
+<![CDATA[
+    SIP/2.0 200 OK
+    [last_Via:]
+    [last_From:]
+    [last_To:]
+    [last_Call-ID:]
+    [last_CSeq:]
+    Content-Length: 0
+]]>
+</send>
+
 <label id="auth_invite"/>
 
 <send>
@@ -154,6 +180,7 @@
     To: "[$cdpn]" <sip:[$cdpn]@[$cdpn_dom]>
     [last_call-id]
     CSeq: [cseq] INVITE
+    Allow: INVITE, ACK, CANCEL, BYE, UPDATE
     Contact: <sip:[service]@[local_ip]:[local_port]>
     [authentication]
     Max-Forwards: 70
@@ -173,5 +200,37 @@
 </send>
 
 <label id="end"/>
+
+
+<!-- Check connected display name -->
+
+<nop hide="true" condexec="CHK_CONNECTED_NAME">
+    <action>
+        <strcmp assign_to="compare_result" variable="CHK_CONNECTED_NAME" variable2="connected_name"/>
+    </action>
+</nop>
+
+<nop hide="true" condexec="compare_result">
+    <action>
+        <warning message="Wrong display name in 200 response. Require display name: [$CHK_CONNECTED_NAME]; display name in response: [$connected_name]"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
+<!-- Check connected number -->
+
+<nop hide="true" condexec="CHK_CONNECTED_NUMBER">
+    <action>
+        <strcmp assign_to="compare_result" variable="CHK_CONNECTED_NUMBER" variable2="connected_number"/>
+    </action>
+</nop>
+
+<nop hide="true" condexec="compare_result">
+    <action>
+        <warning message="Wrong number in 200 response. Require number: [$CHK_CONNECTED_NUMBER]; number in response: [$connected_number]"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
 <pause milliseconds="2000"/>
 </scenario>
