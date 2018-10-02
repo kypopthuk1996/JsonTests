@@ -94,7 +94,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uas_send_bye.xml",
-                  "Options": "-m 1 -set CHK_CGPN %%EXT_NUMBER%%",
+                  "Options": "-m 1 -set CHK_CGPN %%EXT_NUMBER%% -d 1000",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "10s"
@@ -183,7 +183,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uas_send_bye.xml",
-                  "Options": "-m 2 -set CHK_CGPN %%EXTERNAL_NUMBER_1%%",
+                  "Options": "-m 2 -set CHK_CGPN %%EXTERNAL_NUMBER_1%% -d 1000",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "10s"
@@ -249,7 +249,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uas_send_bye.xml",
-                  "Options": "-m 1 -set CHK_CGPN %%EXT_NUMBER%%",
+                  "Options": "-m 1 -set CHK_CGPN %%EXT_NUMBER%% -d 1000",
                   "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "10s"
