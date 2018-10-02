@@ -1,5 +1,6 @@
 {
   "TestName": "number_plan",
+  "AutoTest": true,
   "Users": [
     {
       "UserId": 0,
