@@ -128,10 +128,10 @@
               "Commands": [
                 {
                   "SourceFile": "ss_conference/conf_refer_to_focus.xml",
-                  "Options": "-m 1 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -set CONF_DOMAIN %%DEV_DOM%% -d 5000",
+                  "Options": "-m 1 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -set CONF_DOMAIN %%DEV_DOM%% -d 10000",
                   "SippType": "uas",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -144,7 +144,7 @@
                   "SourceFile": "ss_conference/uas_recv_update_in_confir_st.xml",
                   "Options": "-m 1 -d 4000 -set CONFNUM *C71%23",
                   "SippType": "uas",
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -155,10 +155,10 @@
               "Commands": [
                 {
                   "SourceFile": "ss_conference/uac_recv_update.xml",
-                  "Options": "-m 1 -d 4000 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -set CONFNUM *C71%23",
+                  "Options": "-m 1 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -set CONFNUM *C71%23 -d 10000",
                   "SippType": "uac",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             }
@@ -179,10 +179,10 @@
               "Commands": [
                 {
                   "SourceFile": "ss_conference/conf_refer_to_user.xml",
-                  "Options": "-m 1 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -set CONF_DOMAIN %%DEV_DOM%% -d 5000",
+                  "Options": "-m 1 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -set CONF_DOMAIN %%DEV_DOM%% -d 10000",
                   "SippType": "uas",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -195,7 +195,7 @@
                   "SourceFile": "ss_conference/uas_recv_update_in_confir_st.xml",
                   "Options": "-m 1 -d 4000 -set CONFNUM *71%23",
                   "SippType": "uas",
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -209,7 +209,7 @@
                   "Options": "-m 1 -d 4000 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -set CONFNUM *71%23",
                   "SippType": "uac",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             }
@@ -230,10 +230,10 @@
               "Commands": [
                 {
                   "SourceFile": "ss_conference/ss_cisco_conf.xml",
-                  "Options": "-m 2 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -d 5000 -set CONF_DOMAIN %%DEV_DOM%%",
+                  "Options": "-m 2 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -d 5000 -set CONF_DOMAIN %%DEV_DOM%% -d 10000",
                   "SippType": "uas",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -246,7 +246,7 @@
                   "SourceFile": "ss_conference/uas_recv_update_in_confir_st.xml",
                   "Options": "-m 1 -d 4000 -set CONFNUM *C71%23",
                   "SippType": "uas",
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -260,7 +260,7 @@
                   "Options": "-m 1 -d 4000 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -set CONFNUM *C71%23",
                   "SippType": "uac",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             }
@@ -292,7 +292,7 @@
                   "Options": "-m 1 -set CALL2_NUMBER %%1.Number%% -set CALL2_DOMAIN %%1.SipDomain%% -set CONF_DOMAIN %%DEV_DOM%% -d 10000",
                   "SippType": "uas",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -305,7 +305,7 @@
                   "SourceFile": "ss_conference/uas_recv_update_in_confir_st.xml",
                   "Options": "-m 1 -d 4000 -set CONFNUM *C71%23",
                   "SippType": "uas",
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             },
@@ -319,7 +319,7 @@
                   "Options": "-m 1 -d 4000 -set CDPN %%0.Number%% -set CDPNDOM %%0.SipDomain%% -set CONFNUM *C71%23",
                   "SippType": "uac",
                   "NeedAuth": true,
-                  "Timeout": "30s"
+                  "Timeout": "50s"
                 }
               ]
             }

@@ -204,16 +204,16 @@
 
 <nop hide="true">
 <action>
-        <exec rtp_stream="resume" />
+    <exec rtp_stream="resume" />
 </action>
 </nop>
 
 <pause milliseconds="1000"/>
 
 <nop hide="true">
-<action>
-        <exec rtp_stream="pause" />
-</action>
+    <action>
+            <exec rtp_stream="pause" />
+    </action>
 </nop>
 
 <!-- Hold call_2 --> 
@@ -493,9 +493,20 @@
 ]]>
 </send>
 
-
+<nop>
+    <action>
+        <exec rtp_stream="resume" />
+        <exec rtp_stream="start_silent_measure"/>
+    </action>
+</nop>
 
 <pause/>
+
+<nop>
+    <action>
+        <exec rtp_stream="stop_silent_measure" req_media_interval="10000" max_error="3000"/>
+    </action>
+</nop>
 
 <!-- Terminate conf call -->
 

@@ -69,43 +69,21 @@
 ]]>
 </send>
 
+<recv request="ACK"></recv>
+
 <nop hide="true">
    <action>
-          <exec rtp_stream="[media_path]/test.alaw,-1,8" />
+        <exec rtp_stream="[media_path]/test.alaw,-1,8" />
+        <exec rtp_stream="start_silent_measure"/>
      </action>
 </nop>
 
-<recv request="ACK"></recv>
-
-
-<!-- Данный UPDATE является лишним и появляется из-за кривой процедуры трансфера -->
-<recv request="UPDATE">
-    <action>
-        <ereg regexp="(\"([^\"]+)\")?\s?<sip:([^;@]+)" search_in="hdr" header="Remote-Party-ID:" assign_to="dummy,dummy,rpi_connected_name,rpi_connected_number"/>
-    </action>
-</recv>
-
-<send>
-<![CDATA[
-    SIP/2.0 200 OK
-    [last_Via:]
-    [last_From:]
-    [last_To:]
-    [last_Call-ID:]
-    [last_CSeq:]
-    Content-Length: 0
-]]>
-</send>
-
-<nop hide="true" next="check_call_park_dname" test="rpi_connected_name" test_var_value="" test_inverse="true"/>
-
 
 <recv request="UPDATE">
     <action>
         <ereg regexp="(\"([^\"]+)\")?\s?<sip:([^;@]+)" search_in="hdr" header="Remote-Party-ID:" assign_to="dummy,dummy,rpi_connected_name,rpi_connected_number"/>
     </action>
 </recv>
-
 
 <send>
 <![CDATA[
@@ -147,7 +125,11 @@
     </action>
 </nop>
 
-<recv request="BYE"></recv>
+<recv request="BYE">
+    <action>
+        <exec rtp_stream="stop_silent_measure" req_media_interval="10000" max_error="3000"/>
+    </action>
+</recv>
 
 <send>
 <![CDATA[

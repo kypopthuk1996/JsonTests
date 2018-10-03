@@ -466,8 +466,20 @@
 <recv response="200"/>
 
 
+<nop>
+    <action>
+        <exec rtp_stream="resume" />
+        <exec rtp_stream="start_silent_measure"/>
+    </action>
+</nop>
+
 <pause/>
 
+<nop>
+    <action>
+        <exec rtp_stream="stop_silent_measure" req_media_interval="10000" max_error="3000"/>
+    </action>
+</nop>
 <!-- Terminate conf dialog -->
 
 <send>

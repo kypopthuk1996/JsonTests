@@ -41,14 +41,11 @@
     a=rtpmap:8 PCMA/8000
 ]]>
 </send>
-<recv response="100" optional="true"></recv>
+<recv response="100" optional="true"/>
 
-<!--Если получено 401 идем на label auth_invite и отсылаем INVITE c аутентификацией -->
 <recv response="401" optional="true" auth="true" next="auth_invite">
     <action>
-        <!--Забрали CSeq -->
         <ereg regexp="[0-9]+" search_in="hdr" header="CSeq:" assign_to="last_cseq"/>
-        <!--Забрали branch -->
         <ereg regexp="(\w|-)*" search_in="hdr" header="branch=" assign_to="last_branch"/>
     </action>
  </recv>
@@ -61,15 +58,9 @@
     <action>
         <!--Забрали CSeq -->
         <ereg regexp="[0-9]+" search_in="hdr" header="CSeq:" assign_to="last_cseq" />
-        <ereg regexp="[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}" search_in="hdr" header="Contact:" assign_to="new_ip" />
+        <exec rtp_stream="[media_path]/test.alaw,-1,8" />
     </action>
  </recv>
-
-<nop hide="true">
-    <action>
-        <setdest host="[$new_ip]" port="[remote_port]" protocol="UDP" />
-    </action>
-</nop>
 
 <send crlf="true">
 <![CDATA[
@@ -83,11 +74,10 @@
 ]]>
 </send>
 
-
-<!-- Данный UPDATE является лишним и появляется из-за кривой процедуры трансфера -->
 <recv request="UPDATE">
     <action>
         <ereg regexp="(\"([^\"]+)\")?\s?<sip:([^;@]+)" search_in="hdr" header="Remote-Party-ID:" assign_to="dummy,dummy,rpi_connected_name,rpi_connected_number"/>
+        <exec rtp_stream="start_silent_measure"/>
     </action>
 </recv>
 
@@ -102,30 +92,6 @@
     Content-Length: 0
 ]]>
 </send>
-
-<nop hide="true" next="check_call_park_dname" test="rpi_connected_name" test_var_value="" test_inverse="true"/>
-
-
-<recv request="UPDATE">
-    <action>
-        <ereg regexp="(\"([^\"]+)\")?\s?<sip:([^;@]+)" search_in="hdr" header="Remote-Party-ID:" assign_to="dummy,dummy,rpi_connected_name,rpi_connected_number"/>
-    </action>
-</recv>
-
-
-<send>
-<![CDATA[
-    SIP/2.0 200 OK
-    [last_Via:]
-    [last_From:]
-    [last_To:]
-    [last_Call-ID:]
-    [last_CSeq:]
-    Content-Length: 0
-]]>
-</send>
-
-<label id="check_call_park_dname"/>
 
 <nop hide="true">
     <action>
@@ -153,9 +119,13 @@
     </action>
 </nop>
 
-<pause milliseconds="5000" crlf="true"/>
+<pause/>
 
-<recv request="BYE"></recv>
+<recv request="BYE">
+    <action>
+        <exec rtp_stream="stop_silent_measure" req_media_interval="10000" max_error="3000"/>
+    </action>
+</recv>
 
 <send next="end">
 <![CDATA[
