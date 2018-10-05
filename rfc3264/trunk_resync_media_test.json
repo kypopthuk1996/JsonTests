@@ -104,7 +104,7 @@
     },
     {
       "Name": "chk_resync_both_sides_after_answer",
-      "Description": "Проверка пересогласования медии после ответа. А и Б не поддерживают 100rel. А звонит с тракнка  на Б  - зарегистрированного на SSW, Б отвечает, в этот момент делается resync медии. Ожидается, что после ответа медия будет пересогласована для обеих сторон.",
+      "Description": "Проверка пересогласования медии после ответа. А и Б не поддерживают 100rel. А звонит с транка  на Б  - зарегистрированного на SSW, Б отвечает, в этот момент делается resync медии. Ожидается, что после ответа медия будет пересогласована для обеих сторон.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -238,7 +238,7 @@
               "TrunkId": 0,
               "WriteStat": true,
               "BackGround": true,
-              "Name": "UAS_RECV_UPDATE",
+              "Name": "UAS_RECV_RE_INVITE",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/uas_recv_re_invite.xml",
@@ -314,7 +314,7 @@
               "TrunkId": 1,
               "WriteStat": true,
               "BackGround": true,
-              "Name": "UAC_RECV_UPDATE",
+              "Name": "UAC_RECV_RE_INVITE",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/uac_recv_re_invite.xml",
@@ -467,7 +467,7 @@
               "TrunkId": 0,
               "WriteStat": true,
               "BackGround": true,
-              "Name": "UAS_UPDATE_NOT_SUP",
+              "Name": "UAS_SEND_491_ON_MEDIA_RESYNC",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/req100rel/uas_send_491_on_update.xml",
@@ -482,7 +482,7 @@
               "Type": "Trunk",
               "TrunkId": 1,
               "BackGround": true,
-              "Name": "UAC_UPDATE_NOT_SUP",
+              "Name": "UAC_SEND_491_ON_MEDIA_RESYNC",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/req100rel/uac_send_491_on_update.xml",
