@@ -200,7 +200,7 @@
               "UserId": 0,
               "WriteStat": true,
               "BackGround": true,
-              "Name": "UAS_RECV_UPDATE",
+              "Name": "UAS_RECV_RE_INVITE",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/uas_recv_re_invite.xml",
@@ -267,7 +267,7 @@
               "Type": "User",
               "UserId": 1,
               "BackGround": true,
-              "Name": "UAC_RECV_UPDATE",
+              "Name": "UAC_RECV_RE_INVITE",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/uac_recv_re_invite.xml",
@@ -408,7 +408,7 @@
               "UserId": 0,
               "WriteStat": true,
               "BackGround": true,
-              "Name": "UAS_UPDATE_NOT_SUP",
+              "Name": "UAS_SEND_491_ON_MEDIA_RESYNC",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/req100rel/uas_send_491_on_update.xml",
@@ -423,7 +423,7 @@
               "Type": "User",
               "UserId": 1,
               "BackGround": true,
-              "Name": "UAC_UPDATE_NOT_SUP",
+              "Name": "UAC_SEND_491_ON_MEDIA_RESYNC",
               "Commands": [
                 {
                   "SourceFile": "rfc3264/req100rel/uac_send_491_on_update.xml",
