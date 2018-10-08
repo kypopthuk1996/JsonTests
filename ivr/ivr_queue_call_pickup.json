@@ -174,7 +174,25 @@
           ]
         },
         {
-          "Sleep": 10
+          "WaitBackGroundUA": {
+            "timeout": 10
+          }
+        },
+        {
+          "ServiceFeature": [
+            {
+              "code": "#160",
+              "userId": 0
+            },
+            {
+              "code": "#160",
+              "userId": 1
+            },
+            {
+              "code": "#160",
+              "userId": 2
+            }
+          ]
         }
       ]
     },
@@ -260,7 +278,25 @@
           ]
         },
         {
-          "Sleep": 5
+          "WaitBackGroundUA": {
+            "timeout": 10
+          }
+        },
+        {
+          "ServiceFeature": [
+            {
+              "code": "#160",
+              "userId": 0
+            },
+            {
+              "code": "#160",
+              "userId": 1
+            },
+            {
+              "code": "#160",
+              "userId": 2
+            }
+          ]
         }
       ]
     }
