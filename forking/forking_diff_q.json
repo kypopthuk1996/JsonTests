@@ -769,7 +769,7 @@
     },
     {
       "Name": "forking disable test",
-      "Description": "Проверка disable режима. Тест будет работать только после теста с испоользованием fork-mode find-me-with-q",
+      "Description": "Проверка disable режима. Тест будет работать только после теста с использованием fork-mode find-me-with-q",
       "TestProcedure": [
         {
           "SendSSHCommand": [
