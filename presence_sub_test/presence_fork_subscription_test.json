@@ -51,12 +51,12 @@
     {}
   ],
   "PreConf": [
-    "/domain/%%DEV_DOM%%/lists/declare simple_presence_test presence simple_presence_test %%0.Number%% %%3.Number%%",
+    "/domain/%%DEV_DOM%%/lists/declare presence_fork_list presence presence_fork_list %%0.Number%% %%3.Number%%",
     "/domain/%%DEV_DOM%%/ss/enable %%0.Number%% presence",
     "/domain/%%DEV_DOM%%/ss/activate %%0.Number%% presence max_subscribe = 2"
   ],
   "PostConf": [
-    "/domain/%%DEV_DOM%%/lists/remove simple_presence_test",
+    "/domain/%%DEV_DOM%%/lists/remove presence_fork_list",
     "/domain/%%DEV_DOM%%/ss/deactivate %%0.Number%% presence",
     "/domain/%%DEV_DOM%%/ss/disable %%0.Number%% presence"
   ],
