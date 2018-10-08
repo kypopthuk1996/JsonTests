@@ -873,7 +873,7 @@
               "Commands": [
                 {
                   "SourceFile": "ivr/uac_send_cancel_after_100.xml",
-                  "Options": "-m 1 -set CDPN A001 -set CDPNDOM %%0.SipDomain%% -d 50",
+                  "Options": "-m 1 -set CDPN A001 -set CDPNDOM %%0.SipDomain%% -d 20",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "40s"
