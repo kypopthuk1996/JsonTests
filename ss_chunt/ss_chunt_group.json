@@ -216,7 +216,7 @@
     },
     {
       "Name": "chunt_queue_overload_test",
-      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызвов отбит",
+      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызов отбит",
       "TestProcedure": [
         {
           "Sleep": 4
@@ -286,7 +286,7 @@
     },
     {
       "Name": "chunt_queue_overload_test_with_100rel",
-      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызвов отбит",
+      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызов отбит",
       "TestProcedure": [
         {
           "Sleep": 4

@@ -366,7 +366,7 @@
     },
     {
       "Name": "chunt_queue_overload_wout_100_rel",
-      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызвов отбит ",
+      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызов отбит ",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -441,7 +441,7 @@
     },
     {
       "Name": "chunt_queue_overload_with_100_rel",
-      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызвов отбит ",
+      "Description": "Запускаем N+1 вызовов, где N - длина очереди. На всех UAS отвечаем, N+1 вызов отбит ",
       "TestProcedure": [
         {
           "SendSSHCommand": [
