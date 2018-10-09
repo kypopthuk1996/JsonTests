@@ -1,6 +1,5 @@
 {
   "TestName": "core_timer_alias_lvl",
-  "Isolate": true,
   "AutoTest": true,
   "Users": [
     {
