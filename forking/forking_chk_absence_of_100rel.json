@@ -111,7 +111,7 @@
               "Commands": [
                 {
                   "SourceFile": "forking/uas_chk_absence_100rel_send_bye.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -d 2000",
                   "SippType": "uas",
                   "Timeout": "20s"
                 }
