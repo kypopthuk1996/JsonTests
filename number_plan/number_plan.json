@@ -49,8 +49,8 @@
     {
       "%%EXT_NUMBER%%": "89134753422",
       "%%EXT_DOMAIN%%": "yahoo",
-      "%%EXTERNAL_NUMBER_1%%" : "3836022345",
-      "%%EXTERNAL_NUMBER_2%%" : "3836022346",
+      "%%EXTERNAL_NUMBER_1%%": "3836022345",
+      "%%EXTERNAL_NUMBER_2%%": "3836022346",
       "%%np_ctx_from_trunk_name%%": "test_np_ctx_from_trunk",
       "%%np_ctx_from_trunk%%": "PGNvbnRleHQgeG1sbnM6eHM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4czpub05hbWVzcGFjZVNjaGVtYUxvY2F0aW9uPSJlY3NzX3JvdXRpbmcueHNkIiBuYW1lPSJ0ZXN0X25wX2N0eF9mcm9tX3RydW5rIiBucD0idGVzdF9ucCIgZGlnaXRtYXA9IigqWzAtOSpdWzAtOSpdLiN8I1swLTkqXVswLTkqXS4jfCojWzAtOSpdWzAtOSpdLiN8MXh4LnwxMHh4LikiPgogIDxydWxlIG5hbWU9InRvX2xvY2FsX251bWJlcnMiPgogICAgPGNvbmRpdGlvbnM+CiAgICAgIDxjZHBuIGRpZ2l0cz0iJSIvPgogICAgPC9jb25kaXRpb25zPgogICAgPHJlc3VsdD4KICAgICAgPGxvY2FsLz4KICAgIDwvcmVzdWx0PgogIDwvcnVsZT4KPC9jb250ZXh0Pg==",
       "%%np_ctx_to_trunk_name%%": "test_np_ctx_to_trunk",
@@ -72,6 +72,7 @@
     "/domain/%%DEV_DOM%%/ss/activate {%%0.Number%%,%%1.Number%%,%%2.Number%%} clip",
     "/domain/%%DEV_DOM%%/ss/activate {%%0.Number%%,%%1.Number%%,%%2.Number%%} cnip",
     "/domain/%%DEV_DOM%%/ss/enable %%2.Number%% chunt",
+    "/domain/%%DEV_DOM%%/properties/set connected_number_mode modified_b",
     "/domain/%%DEV_DOM%%/ss/activate %%2.Number%% chunt mode = manual, numbers = [%%0.Number%%,%%1.Number%%], cyclic = false, queue_size = 1, max_shift_count = 0, queue_strategy = drop, search_strategy = first, reset_window_start_pos_after_call = true, window_size = 2, window_shift = 0, window_start_pos = 0, window_shift_timeout = 0"
   ],
   "PostConf": [
@@ -85,6 +86,7 @@
     "/domain/%%DEV_DOM%%/ss/disable {%%0.Number%%,%%1.Number%%,%%2.Number%%} clip cnip",
     "/domain/%%DEV_DOM%%/iface/user-set sip1 %%0.SipGroup%% %%0.Number%%@%%0.SipDomain%% routing.context default_routing",
     "/domain/%%DEV_DOM%%/iface/user-set sip1 %%1.SipGroup%% %%1.Number%%@%%1.SipDomain%% routing.context default_routing",
+    "/domain/%%DEV_DOM%%/properties/set connected_number_mode origin_b",
     "/domain/%%DEV_DOM%%/ss/deactivate %%2.Number%% chunt",
     "/domain/%%DEV_DOM%%/ss/disable %%2.Number%% chunt"
   ],
