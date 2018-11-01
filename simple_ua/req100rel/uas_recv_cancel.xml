@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 <scenario name = "simple uas recv CANCEL">
+<Global variables="SILENT_CANCEL"/>
 <User variables="dummy"/>
 <Reference variables="dummy"/>
 
@@ -74,6 +75,7 @@
         <ereg regexp="branch=([^;$]+)" check_it="true" search_in="hdr" header="Via:" assign_to="cancel_branch" />
         <ereg regexp=".*"  check_it="true" search_in="hdr" header="From:" assign_to="cancel_from" />
         <ereg regexp=".*" check_it="true" search_in="hdr" header="To:" assign_to="cancel_to" />
+        <ereg regexp="Reason: SIP;cause=200" search_in="msg" assign_to="silent_cancel" />
     </action>
 </recv>
 
@@ -108,6 +110,34 @@
 <recv request="ACK"></recv>
 
 <pause milliseconds="2000"/>
+
+<!-- Check CANCEL reason -->
+
+<nop hide="true" test="SILENT_CANCEL" next="need_silent_cancel"/>
+<nop hide="true" next="dont_need_silent_cancel"/>
+
+<label id="need_silent_cancel"/>
+
+<nop hide="true" condexec="silent_cancel" condexec_inverse="true" next="check_continue">
+    <action>
+        <warning message="Receive CANCEL without Reason: SIP;cause=200 but this header need"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
+<label id="dont_need_silent_cancel"/>
+
+<nop hide="true" condexec="silent_cancel">
+    <action>
+        <warning message="Receive CANCEL with Reason: SIP;cause=200 but this header don't need"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
+<label id="check_continue"/>
+
+
+<!-- Check sip CANCEL params -->
 
 <nop hide="true">
     <action>

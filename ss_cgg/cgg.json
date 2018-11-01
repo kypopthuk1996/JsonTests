@@ -94,13 +94,13 @@
                 },
                 {
                   "SourceFile": "simple_ua/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
                 {
                   "SourceFile": "simple_ua/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 }
@@ -114,7 +114,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
@@ -126,7 +126,7 @@
                 },
                 {
                   "SourceFile": "simple_ua/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 }
@@ -140,13 +140,13 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
                 {
                   "SourceFile": "simple_ua/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
@@ -197,13 +197,13 @@
                 },
                 {
                   "SourceFile": "simple_ua/req100rel/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
                 {
                   "SourceFile": "simple_ua/req100rel/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 }
@@ -217,7 +217,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/req100rel/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
@@ -229,7 +229,7 @@
                 },
                 {
                   "SourceFile": "simple_ua/req100rel/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 }
@@ -243,13 +243,13 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/req100rel/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
                 {
                   "SourceFile": "simple_ua/req100rel/uas_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "40s"
                 },
