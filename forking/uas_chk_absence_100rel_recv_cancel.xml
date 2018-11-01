@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE scenario SYSTEM "sipp.dtd">
 <scenario name = "UAS check of absence 100rel in Support header. Recv CANCEL">
-
+<Global variables="SILENT_CANCEL"/>
 <User variables="dummy"/>
 <Reference variables="dummy"/>
 
@@ -42,7 +42,7 @@
 
 <recv request="CANCEL">
     <action>
-        <log message="CANCEL [timestamp]"/>
+        <ereg regexp="Reason: SIP;cause=200" search_in="msg" assign_to="silent_cancel" />
     </action>
 </recv>
 
@@ -71,5 +71,31 @@
 </send>
 
 <recv request="ACK"></recv>
+
+
+<!-- Check CANCEL reason -->
+
+<nop hide="true" test="SILENT_CANCEL" next="need_silent_cancel"/>
+<nop hide="true" next="dont_need_silent_cancel"/>
+
+<label id="need_silent_cancel"/>
+
+<nop hide="true" condexec="silent_cancel" condexec_inverse="true" next="check_continue">
+    <action>
+        <warning message="Receive CANCEL without Reason: SIP;cause=200 but this header need"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
+<label id="dont_need_silent_cancel"/>
+
+<nop hide="true" condexec="silent_cancel">
+    <action>
+        <warning message="Receive CANCEL with Reason: SIP;cause=200 but this header don't need"/>
+        <exec int_cmd="stop_now"/>
+    </action>
+</nop>
+
+<label id="check_continue"/>
 
 </scenario>

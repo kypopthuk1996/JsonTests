@@ -83,7 +83,7 @@
               "Commands": [
                 {
                   "SourceFile": "forking/uas_chk_absence_100rel_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "45s"
                 }
@@ -97,7 +97,7 @@
               "Commands": [
                 {
                   "SourceFile": "forking/uas_chk_absence_100rel_recv_cancel.xml",
-                  "Options": "-m 1",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
                   "SippType": "uas",
                   "Timeout": "45s"
                 }
