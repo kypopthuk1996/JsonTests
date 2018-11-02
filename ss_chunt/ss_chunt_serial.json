@@ -62,6 +62,7 @@
     {
       "%%ChuntUser%%": "%%0.Number%%",
       "%%ChuntSipDomain%%": "%%0.SipDomain%%",
+      "%%ChuntSipGroup%%": "%%0.SipGroup%%",
       "%%ChuntGroup%%": "[%%1.Number%%,%%2.Number%%,%%3.Number%%]"
     }
   ],
@@ -827,6 +828,156 @@
                 }
               ]
             }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "cancel_call_from_a_side",
+      "Description": "Проверка отбоя группового вызова со стороны абонента А посредством запроса CANCEL. A звонит на групповой номер из трёх абонентов, вызов распределяется на первого абонента группы, он не отвечает. Ожидается, что по истечению window_shift_timeout плечо Б будет отбито посредством CANCEL с Reason: SIP;cause=200, а вызов распределится на следующего абонента. Второй абонент также не отвечает на вызов и получает CANCEL c Reason: SIP;cause=200. Далее вызов распределяется на третьего абонента группы, он не отвечает на него, в этот момент абонент А отправляет CANCEL. Ожидается, что третьему абоненту будет отпрален CANCEL без Reason: SIP;cause=200.",
+      "TestProcedure": [
+        {
+          "Sleep": 4
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "User",
+              "UserId": 1,
+              "WriteStat": true,
+              "Name": "UAS1_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
+                  "SippType": "uas",
+                  "Timeout": "60s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 2,
+              "WriteStat": true,
+              "Name": "UAS2_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
+                  "SippType": "uas",
+                  "Timeout": "60s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 3,
+              "WriteStat": true,
+              "Name": "UAS3_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1",
+                  "SippType": "uas",
+                  "Timeout": "60s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 4,
+              "WriteStat": true,
+              "Name": "UAC_SEND_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uac_send_cancel.xml",
+                  "Options": "-m 1 -set CDPN %%ChuntUser%% -set CDPNDOM %%ChuntSipDomain%% -d 10000",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "60s"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "cancel_call_by_no_answer_timer",
+      "Description": "Проверка отбоя группового вызова по таймеру неответа. Устанавливаем таймер неответа на групповой номер. A звонит на групповой номер из трёх абонентов, вызов распределяется на первого абонента группы, он не отвечает. Ожидается, что по истечению window_shift_timeout плечо Б будет отбито посредством CANCEL с Reason: SIP;cause=200, а вызов распределится на следующего абонента. Второй абонент также не отвечает на вызов и получает CANCEL c Reason: SIP;cause=200. Далее вызов распределяется на третьего абонента группы, он не отвечает на него, срабатывает таймер no_answer_timeout. Ожидается, что третьему абоненту будет отпрален CANCEL без Reason: SIP;cause=200, а абоненту А будет отпрален 480 ответ.",
+      "TestProcedure": [
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/alias/set %%ChuntUser%% %%ChuntSipGroup%% %%ChuntUser%%@%%ChuntSipDomain%% no_answer_timeout 10"
+          ]
+        },
+        {
+          "Sleep": 4
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "User",
+              "UserId": 1,
+              "WriteStat": true,
+              "Name": "UAS1_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
+                  "SippType": "uas",
+                  "Timeout": "60s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 2,
+              "WriteStat": true,
+              "Name": "UAS2_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1 -set SILENT_CANCEL true",
+                  "SippType": "uas",
+                  "Timeout": "60s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 3,
+              "WriteStat": true,
+              "Name": "UAS3_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1",
+                  "SippType": "uas",
+                  "Timeout": "60s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 4,
+              "WriteStat": true,
+              "Name": "UAC_RECV_480",
+              "Commands": [
+                {
+                  "SourceFile": "ss_chunt/uac_recv_480.xml",
+                  "Options": "-m 1 -set CDPN %%ChuntUser%% -set CDPNDOM %%ChuntSipDomain%%",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "60s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/alias/clean %%ChuntUser%% %%ChuntSipGroup%% %%ChuntUser%%@%%ChuntSipDomain%% no_answer_timeout"
           ]
         }
       ]
