@@ -231,6 +231,29 @@
               ]
             }
           ]
+        },
+        {
+          "CheckDifference": [
+            {
+              "Difference": 4000,
+              "MaxError": 0.5,
+              "CompareMode": "inside_ua",
+              "SearchMode": "inside_call",
+              "UA": "user:1",
+              "Msg": [
+                {
+                  "MsgType": "request",
+                  "Method": "INVITE",
+                  "Code": null
+                },
+                {
+                  "MsgType": "request",
+                  "Method": "CANCEL",
+                  "Code": null
+                }
+              ]
+            }
+          ]
         }
       ]
     },
