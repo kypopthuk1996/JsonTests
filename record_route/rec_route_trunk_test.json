@@ -1,5 +1,5 @@
 {
-  "TestName": "trunk_chek_rec_route",
+  "TestName": "record_route_trunk_test",
   "AutoTest": true,
   "Trunks": [
     {
