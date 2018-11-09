@@ -23,10 +23,10 @@
       "%%to_trunk2_ctx%%": "PGNvbnRleHQgeG1sbnM6eHM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDEvWE1MU2NoZW1hLWluc3RhbmNlIiB4czpub05hbWVzcGFjZVNjaGVtYUxvY2F0aW9uPSJlY3NzX3JvdXRpbmcueHNkIiBuYW1lPSJjdHhfdHJ1bmtfYmxhY2tfbGlzdF8yIiBkaWdpdG1hcD0iKCpbMC05Kl1bMC05Kl0uI3wjWzAtOSpdWzAtOSpdLiN8KiNbMC05Kl1bMC05Kl0uI3wxeHgufDEweHguKSI+CiAgPHJ1bGUgbmFtZT0icnVsZTEiPgogICAgPGNvbmRpdGlvbnM+CiAgICAgIDxmaW5hbCB2YWx1ZT0idHJ1ZSIvPgogICAgICA8Y2RwbiBkaWdpdHM9IiUiLz4KICAgIDwvY29uZGl0aW9ucz4KICAgIDxyZXN1bHQ+CiAgICAgIDxleHRlcm5hbD4KICAgICAgICA8dHJ1bmsgdmFsdWU9ImJsYWNrX2xpc3RfdHJ1bmtfMiIvPgogICAgICA8L2V4dGVybmFsPgogICAgPC9yZXN1bHQ+CiAgPC9ydWxlPgo8L2NvbnRleHQ+",
       "%%trunk1_ctx_name%%": "ctx_trunk_black_list_2",
       "%%trunk2_ctx_name%%": "ctx_trunk_black_list_1",
-      "%%black_num_1%%": "80008458597",
-      "%%black_num_2%%": "80008458598",
-      "%%black_num_3%%": "80008458599",
-      "%%white_number%%": "80004753423",
+      "%%black_num_1%%": "80008458100",
+      "%%black_num_2%%": "80008458101",
+      "%%black_num_3%%": "80008458102",
+      "%%white_number%%": "80008458200",
       "%%dummy_number%%": "80014534534"
     }
   ],
@@ -47,7 +47,7 @@
   "Tests": [
     {
       "Name": "test_blacklist_for_incoming_calls",
-      "Description": "Проверка работы blacklist для входящих вызовов. Устанваливаем на транк blacklist для входящих вызовов. Делаем несколько входящих вызовов с запрещённых номеров. Ожидается, что вызовы будут отбиты 403 ответом. Далее делаем входящий вызов с незапрещённого номера. Ожидается, что вызов пройдет успешно. Далее отключаем blacklist и делаем входящий вызов с запрещённого номера. Ожидается, что вызовов пройдет успешно.",
+      "Description": "Проверка работы blacklist для входящих вызовов. Устанавливаем на транк blacklist для входящих вызовов. Делаем несколько входящих вызовов с запрещённых номеров. Ожидается, что вызовы будут отбиты 403 ответом. Далее делаем исходящий вызов с запрещённого номера. Ожидается, что вызовов пройдет успешно. Далее делаем входящий вызов с незапрещённого номера. Ожидается, что вызов пройдет успешно. Далее отключаем blacklist и делаем входящий вызов с запрещённого номера. Ожидается, что вызовов пройдет успешно.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -61,7 +61,7 @@
               "Type": "Trunk",
               "TrunkId": 1,
               "WriteStat": true,
-              "Name": "UAC_SEND_CALL_TO_BANNED_NUMBERS",
+              "Name": "UAC_SEND_CALL_FROM_BANNED_NUMBERS",
               "Commands": [
                 {
                   "SourceFile": "black_and_white_lists/uac_recv_403.xml",
@@ -73,6 +73,40 @@
                 {
                   "SourceFile": "black_and_white_lists/uac_recv_403.xml",
                   "Options": "-m 1 -set CDPN %%dummy_number%% -set CDPNDOM %%Tr.1.SipDomain%% -set CGPN %%black_num_3%% -set CGPNDOM %%Tr.2.SipDomain%% -d 2000",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "10s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "Trunk",
+              "TrunkId": 1,
+              "WriteStat": true,
+              "Name": "UAS_RECV_CALL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_send_bye.xml",
+                  "Options": "-m 1 -d 3000",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "10s"
+                }
+              ]
+            },
+            {
+              "Type": "Trunk",
+              "TrunkId": 2,
+              "WriteStat": true,
+              "Name": "UAC_MAKE_CALL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uac_recv_bye.xml",
+                  "Options": "-m 1 -set CDPN %%dummy_number%% -set CDPNDOM %%Tr.1.SipDomain%% -set CGPN %%black_num_2%% -set CGPNDOM %%Tr.2.SipDomain%% -d 1000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "10s"
@@ -164,7 +198,7 @@
     },
     {
       "Name": "test_blacklist_for_outgoing_calls",
-      "Description": "Проверка работы blacklist для исходящих вызовов. Устанваливаем на транк blacklist для исходящих вызовов. Делаем несколько исходящих вызовов с запрещённых номеров. Ожидается, что вызовы будут отбиты 403 ответом. Далее делаем исходящий вызов с незапрещённого номера. Ожидается, что вызов пройдет успешно. Далее отключаем blacklist и делаем исходящий вызов с запрещённого номера. Ожидается, что вызовов пройдет успешно.",
+      "Description": "Проверка работы blacklist для исходящих вызовов. Устанавливаем на транк blacklist для исходящих вызовов. Делаем несколько исходящих вызовов с запрещённых номеров. Ожидается, что вызовы будут отбиты 403 ответом. Далее делаем входящий вызов с запрещённого номера. Ожидается, что вызовов пройдет успешно. Далее делаем исходящий вызов с незапрещённого номера. Ожидается, что вызов пройдет успешно. Далее отключаем blacklist и делаем исходящий вызов с запрещённого номера. Ожидается, что вызовов пройдет успешно.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -178,7 +212,7 @@
               "Type": "Trunk",
               "TrunkId": 2,
               "WriteStat": true,
-              "Name": "UAC_SEND_CALL_TO_BANNED_NUMBERS",
+              "Name": "UAC_SEND_CALL_FROM_BANNED_NUMBERS",
               "Commands": [
                 {
                   "SourceFile": "black_and_white_lists/uac_recv_403.xml",
@@ -190,6 +224,40 @@
                 {
                   "SourceFile": "black_and_white_lists/uac_recv_403.xml",
                   "Options": "-m 1 -set CDPN %%dummy_number%% -set CDPNDOM %%Tr.1.SipDomain%% -set CGPN %%black_num_3%% -set CGPNDOM %%Tr.2.SipDomain%% -d 2000",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "10s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "Trunk",
+              "TrunkId": 2,
+              "WriteStat": true,
+              "Name": "UAS_RECV_CALL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_send_bye.xml",
+                  "Options": "-m 1 -d 3000",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "10s"
+                }
+              ]
+            },
+            {
+              "Type": "Trunk",
+              "TrunkId": 1,
+              "WriteStat": true,
+              "Name": "UAC_MAKE_CALL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uac_recv_bye.xml",
+                  "Options": "-m 1 -set CDPN %%dummy_number%% -set CDPNDOM %%Tr.1.SipDomain%% -set CGPN %%black_num_1%% -set CGPNDOM %%Tr.2.SipDomain%% -d 1000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "10s"
