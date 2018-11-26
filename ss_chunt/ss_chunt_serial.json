@@ -891,7 +891,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_send_cancel.xml",
-                  "Options": "-m 1 -set CDPN %%ChuntUser%% -set CDPNDOM %%ChuntSipDomain%% -d 10000",
+                  "Options": "-m 1 -set CDPN %%ChuntUser%% -set CDPNDOM %%ChuntSipDomain%% -d 12000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "60s"
