@@ -60,7 +60,7 @@
   "Tests": [
     {
       "Name": "create_room_and_add_user",
-      "Description": "Д создает конфу при помощи полного feature-кода. А добавляет в нее абонентов Б",
+      "Description": "Абонент создает конфу используя полного feature-кода. Абонент А добавляет в нее абонента Б.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -130,7 +130,7 @@
     },
     {
       "Name": "create_room_use_full_feature_code",
-      "Description": "А создает конфу при помощи полного feature-кода. Б пытается создать конфу, комната не создается. С заходит в комнату по короткому feature-коду.",
+      "Description": "Абонент А, с включенной услугой teleconference, создает конфу используя полного feature-кода. Конфа создается. Абонент Б без улсуги teleconference создает конфу, используя полный feature-код. Конфа НЕ создается. Абонент С заходит в конфу по короткому feature-коду. Вход успешен.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -142,6 +142,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
@@ -156,6 +157,7 @@
             {
               "Type": "User",
               "UserId": 1,
+              "BackGround": true,
               "Name": "CREATE_ROOM_ANY_USER",
               "Commands": [
                 {
@@ -166,7 +168,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 3
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 2,
@@ -187,7 +196,7 @@
     },
     {
       "Name": "create_room_use_short_feature_code",
-      "Description": "А создает конфу при помощи короткого feature-кода. Б пытается создать конфу, комната не создается. С заходит в комнату по полному feature-коду.",
+      "Description": "Абонент А , с включенной услугой teleconference, создает конфу используя короткий feature-кода. Комната создается. Абонент Б без услуги teleconference создает конфу, используя полный feature-код. Комната НЕ создается. Абонент С заходит в комнату по полному feature-коду. Вход успешен.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -199,6 +208,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
@@ -213,6 +223,7 @@
             {
               "Type": "User",
               "UserId": 1,
+              "BackGround": true,
               "Name": "CREATE_ROOM_ANY_USER",
               "Commands": [
                 {
@@ -223,7 +234,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 3
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 2,
@@ -244,7 +262,7 @@
     },
     {
       "Name": "create_room_use_template(private_auto_collect)",
-      "Description": "Сбор конфы из шаблона(приватная, автосбор). Д не может попасть в закрытую конфу.",
+      "Description": "Абонент А собирает конфу из шаблона(приватная, автосбор). Абонент Б пытается зайти в закрытую конфу. Вход не успешен.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -331,7 +349,7 @@
     },
     {
       "Name": "destroy_conf_when_master_exit",
-      "Description": "А создает конфу. Б и C заходят в конфу. Конфа закрывается, когда выходит мастер.",
+      "Description": "Абонент А создает конфу. Абоненты Б и C заходят в конфу. Конфа закрывается, когда выходит мастер.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -361,8 +379,8 @@
         },
         {
           "Sleep": 5
-            },
-            {
+        },
+        {
           "StartUA": [
             {
               "Type": "User",
@@ -403,7 +421,7 @@
     },
     {
       "Name": "create_room_use_list_template",
-      "Description": "Сбор конфы из шаблона со списком. Добавление и удаление группы из конфы по feature-коду",
+      "Description": "Абонент А собирает конфу из шаблона со списком. Добавление и удаление группы в конфу по feature-коду работает успешно.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -419,6 +437,7 @@
             {
               "Type": "User",
               "UserId": 1,
+              "BackGround": true,
               "Name": "RECV_ADD_TO_ROOM",
               "Commands": [
                 {
@@ -433,6 +452,7 @@
             {
               "Type": "User",
               "UserId": 2,
+              "BackGround": true,
               "Name": "RECV_ADD_TO_ROOM",
               "Commands": [
                 {
@@ -447,6 +467,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
@@ -457,7 +478,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 3
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 3,
