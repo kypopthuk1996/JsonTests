@@ -65,6 +65,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_CONF-ROOM_MASTER",
               "Commands": [
                 {
@@ -75,7 +76,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 3
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 1,
@@ -193,6 +201,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_CONF-ROOM_MASTER",
               "Commands": [
                 {
@@ -203,7 +212,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 1
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 2,
@@ -304,11 +320,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 1,
-              "BackGround": true,
               "Name": "CREATE_CONF-ROOM_MEMBER",
               "Commands": [
                 {
@@ -321,9 +340,6 @@
               ]
             }
           ]
-        },
-        {
-          "Sleep": 3
         },
         {
           "StartUA": [
@@ -365,6 +381,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_CONF-ROOM_MASTER",
               "Commands": [
                 {
@@ -375,7 +392,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 1
+        },
+        {
+          "StartUA": [
                {
               "Type": "User",
               "UserId": 2,
@@ -414,6 +438,7 @@
             {
               "Type": "User",
               "UserId": 0,
+              "BackGround": true,
               "Name": "CREATE_CONF-ROOM_MASTER",
               "Commands": [
                 {
@@ -424,7 +449,14 @@
                   "Timeout": "30s"
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "Sleep": 3
+        },
+        {
+          "StartUA": [
             {
               "Type": "User",
               "UserId": 2,
