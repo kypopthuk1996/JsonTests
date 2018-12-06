@@ -70,7 +70,7 @@
               "Commands": [
                 {
                   "SourceFile": "ss_meet_me_conference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270# -set CDPNDOM %%DEV_DOM%% -d 5000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -141,7 +141,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270*%%0.Number%%# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270*%%0.Number%%# -set CDPNDOM %%DEV_DOM%% -d 5000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -206,7 +206,7 @@
               "Commands": [
                 {
                   "SourceFile": "ss_meet_me_conference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270*600# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270*600# -set CDPNDOM %%DEV_DOM%% -d 5000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -263,7 +263,7 @@
               "Commands": [
                 {
                   "SourceFile": "ss_meet_me_conference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270*333# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270*333# -set CDPNDOM %%DEV_DOM%% -d 5000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -314,7 +314,7 @@
               "Commands": [
                 {
                   "SourceFile": "ss_meet_me_conference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270# -set CDPNDOM %%DEV_DOM%% -d 8000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -386,7 +386,7 @@
               "Commands": [
                 {
                   "SourceFile": "ss_meet_me_conference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270*%%2.Number%%# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270*%%2.Number%%# -set CDPNDOM %%DEV_DOM%% -d 5000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -443,7 +443,7 @@
               "Commands": [
                 {
                   "SourceFile": "ss_meet_me_conference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *270*%%1.Number%%# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *270*%%1.Number%%# -set CDPNDOM %%DEV_DOM%% -d 5000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
