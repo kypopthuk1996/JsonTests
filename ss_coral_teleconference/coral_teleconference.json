@@ -60,7 +60,7 @@
   "Tests": [
     {
       "Name": "create_room_and_add_user",
-      "Description": "Абонент создает конфу используя полного feature-кода. Абонент А добавляет в нее абонента Б.",
+      "Description": "Абонент создает конфу, используя полный feature-кода. Абонент А добавляет в нее абонента Б.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -94,8 +94,8 @@
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*%%3.Number%%# -set CDPNDOM %%DEV_DOM%%",
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470*%%3.Number%%# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -130,7 +130,7 @@
     },
     {
       "Name": "create_room_use_full_feature_code",
-      "Description": "Абонент А, с включенной услугой teleconference, создает конфу используя полного feature-кода. Конфа создается. Абонент Б без улсуги teleconference создает конфу, используя полный feature-код. Конфа НЕ создается. Абонент С заходит в конфу по короткому feature-коду. Вход успешен.",
+      "Description": "Абонент А, с включенной услугой teleconference, создает конф, используя полный feature-кода. Конфа создается. Абонент Б без улсуги teleconference создает конфу, используя полный feature-код. Конфа НЕ создается. Абонент С заходит в конфу по короткому feature-коду. Вход успешен.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -146,8 +146,8 @@
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*%%2.Number%%# -set CDPNDOM %%DEV_DOM%%",
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470*%%2.Number%%# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -196,7 +196,7 @@
     },
     {
       "Name": "create_room_use_short_feature_code",
-      "Description": "Абонент А , с включенной услугой teleconference, создает конфу используя короткий feature-кода. Комната создается. Абонент Б без услуги teleconference создает конфу, используя полный feature-код. Комната НЕ создается. Абонент С заходит в комнату по полному feature-коду. Вход успешен.",
+      "Description": "Абонент А, с включенной услугой teleconference, создает конфу, используя короткий feature-кода. Комната создается. Абонент Б без услуги teleconference создает конфу, используя полный feature-код. Комната НЕ создается. Абонент С заходит в комнату по полному feature-коду. Вход успешен.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -212,8 +212,8 @@
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470# -set CDPNDOM %%DEV_DOM%%",
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -262,7 +262,7 @@
     },
     {
       "Name": "create_room_use_template(private_auto_collect)",
-      "Description": "Абонент А собирает конфу из шаблона(приватная, автосбор). Абонент Б пытается зайти в закрытую конфу. Вход не успешен.",
+      "Description": "Абонент А собирает конференцию из шаблона(приватная, автосбор). Абонент Б пытается зайти в закрытую конференцию. Вход не успешен.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -311,8 +311,8 @@
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*999# -set CDPNDOM %%DEV_DOM%%",
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470*999# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -349,7 +349,7 @@
     },
     {
       "Name": "destroy_conf_when_master_exit",
-      "Description": "Абонент А создает конфу. Абоненты Б и C заходят в конфу. Конфа закрывается, когда выходит мастер.",
+      "Description": "Абонент А создает конференцию. Абоненты Б и C заходят в конференцию. Конференция закрывается, когда выходит мастер.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -367,8 +367,8 @@
               "BackGround": true,
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*888# -set CDPNDOM %%DEV_DOM%% -p 9000",
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470*888# -set CDPNDOM %%DEV_DOM%% -p 9000 -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -421,7 +421,7 @@
     },
     {
       "Name": "create_room_use_list_template",
-      "Description": "Абонент А собирает конфу из шаблона со списком. Добавление и удаление группы в конфу по feature-коду работает успешно.",
+      "Description": "Абонент А собирает конференцию из шаблона со списком. Добавление и удаление группы в конференцию по feature-коду работает успешно.",
       "TestProcedure": [
         {
           "SendSSHCommand": [
@@ -471,8 +471,8 @@
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*999# -set CDPNDOM %%DEV_DOM%%",
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470*999# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
