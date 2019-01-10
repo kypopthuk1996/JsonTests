@@ -41,7 +41,7 @@
   ],
   "Tests": [
     {
-      "Name": "simple_simple_callback_test",
+      "Name": "simple_callback_test",
       "Description": "Тестирование услуги callback",
       "TestProcedure": [
         {
@@ -93,7 +93,7 @@
       "TestProcedure": [
         {
           "SendSSHCommand": [
-            "/domain/%%DEV_DOM%%/timers/core/set response_timeout 30"
+            "/domain/%%DEV_DOM%%/timers/core/set response_timeout 30s"
           ]
         },
         {
