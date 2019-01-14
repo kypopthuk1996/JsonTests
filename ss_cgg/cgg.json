@@ -491,7 +491,7 @@
       "TestProcedure": [
         {
           "SendSSHCommand": [
-            "/domain/%%DEV_DOM%%/alias/set %%CggUser%% %%CggSipGroup%% %%CggUser%%@%%CggSipDomain%% no_answer_timeout 4"
+            "/domain/%%DEV_DOM%%/alias/set %%CggUser%% %%CggSipGroup%% %%CggUser%%@%%CggSipDomain%% no_answer_timeout 4s"
           ]
         },
         {
