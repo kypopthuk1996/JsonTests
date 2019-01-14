@@ -66,10 +66,14 @@
     }
   ],
   "PreConf": [
+    "/domain/%%DEV_DOM%%/ss/enable %%4.Number%% ml",
+    "/domain/%%DEV_DOM%%/ss/activate %%4.Number%% ml line_count = 3",
     "/domain/%%DEV_DOM%%/ss/enable %%ChuntUser%% chunt",
     "/domain/%%DEV_DOM%%/ss/activate %%ChuntUser%% chunt mode = manual, cyclic = true, max_shift_count = -1, search_strategy = random, queue_size = 3, window_size = 1, window_start_pos = 0, window_shift_timeout = 0, reset_window_start_pos_after_call = false, window_shift = 1, queue_strategy = wait, numbers = %%ChuntGroup%%"
   ],
   "PostConf": [
+    "/domain/%%DEV_DOM%%/ss/deactivate %%4.Number%% ml",
+    "/domain/%%DEV_DOM%%/ss/disable %%4.Number%% ml",
     "/domain/%%DEV_DOM%%/ss/deactivate %%ChuntUser%% chunt",
     "/domain/%%DEV_DOM%%/ss/disable %%ChuntUser%% chunt"
   ],

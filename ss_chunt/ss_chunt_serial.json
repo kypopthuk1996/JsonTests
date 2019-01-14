@@ -67,10 +67,14 @@
     }
   ],
   "PreConf": [
+    "/domain/%%DEV_DOM%%/ss/enable %%4.Number%% ml",
+    "/domain/%%DEV_DOM%%/ss/activate %%4.Number%% ml line_count = 4",
     "/domain/%%DEV_DOM%%/ss/enable %%ChuntUser%% chunt",
     "/domain/%%DEV_DOM%%/ss/activate %%ChuntUser%% chunt mode = serial, numbers = %%ChuntGroup%%,reset_window_start_pos_after_call=true, queue_size = 3, window_shift_timeout = 3, cyclic = false, max_shift_count = 2, search_strategy = first, queue_strategy = drop"
   ],
   "PostConf": [
+    "/domain/%%DEV_DOM%%/ss/deactivate %%4.Number%% ml",
+    "/domain/%%DEV_DOM%%/ss/disable %%4.Number%% ml",
     "/domain/%%DEV_DOM%%/ss/deactivate %%ChuntUser%% chunt",
     "/domain/%%DEV_DOM%%/ss/disable %%ChuntUser%% chunt"
   ],
@@ -837,11 +841,6 @@
       "Description": "Проверка отбоя группового вызова со стороны абонента А посредством запроса CANCEL. A звонит на групповой номер из трёх абонентов, вызов распределяется на первого абонента группы, он не отвечает. Ожидается, что по истечению window_shift_timeout плечо Б будет отбито посредством CANCEL с Reason: SIP;cause=200, а вызов распределится на следующего абонента. Второй абонент также не отвечает на вызов и получает CANCEL c Reason: SIP;cause=200. Далее вызов распределяется на третьего абонента группы, он не отвечает на него, в этот момент абонент А отправляет CANCEL. Ожидается, что третьему абоненту будет отпрален CANCEL без Reason: SIP;cause=200.",
       "TestProcedure": [
         {
-          "SendSSHCommand": [
-            "/domain/%%DEV_DOM%%/ss/activate %%ChuntUser%% chunt mode = serial, numbers = %%ChuntGroup%%,reset_window_start_pos_after_call=true, queue_size = 3, window_shift_timeout = 3, cyclic = false, max_shift_count = 2, search_strategy = first, queue_strategy = drop"
-          ]
-        },
-        {
           "Sleep": 4
         },
         {
@@ -896,7 +895,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_send_cancel.xml",
-                  "Options": "-m 1 -set CDPN %%ChuntUser%% -set CDPNDOM %%ChuntSipDomain%% -d 12000",
+                  "Options": "-m 1 -set CDPN %%ChuntUser%% -set CDPNDOM %%ChuntSipDomain%% -d 10000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "60s"
@@ -913,8 +912,7 @@
       "TestProcedure": [
         {
           "SendSSHCommand": [
-            "/domain/%%DEV_DOM%%/alias/set %%ChuntUser%% %%ChuntSipGroup%% %%ChuntUser%%@%%ChuntSipDomain%% no_answer_timeout 10",
-            "/domain/%%DEV_DOM%%/ss/activate %%ChuntUser%% chunt mode = serial, numbers = %%ChuntGroup%%,reset_window_start_pos_after_call=true, queue_size = 3, window_shift_timeout = 3, cyclic = false, max_shift_count = 2, search_strategy = first, queue_strategy = drop"
+            "/domain/%%DEV_DOM%%/alias/set %%ChuntUser%% %%ChuntSipGroup%% %%ChuntUser%%@%%ChuntSipDomain%% no_answer_timeout 10s"
           ]
         },
         {
