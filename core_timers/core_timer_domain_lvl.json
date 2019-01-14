@@ -30,8 +30,8 @@
     {}
   ],
   "PreConf": [
-    "/domain/%%DEV_DOM%%/timers/core/set conversation_timeout 5",
-    "/domain/%%DEV_DOM%%/timers/core/set no_answer_timeout 4"
+    "/domain/%%DEV_DOM%%/timers/core/set conversation_timeout 5s",
+    "/domain/%%DEV_DOM%%/timers/core/set no_answer_timeout 4s"
   ],
   "PostConf": [
     "/domain/%%DEV_DOM%%/timers/core/clean conversation_timeout",
