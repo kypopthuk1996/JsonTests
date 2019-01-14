@@ -67,11 +67,15 @@
   ],
   "PreConf": [
     "/domain/%%DEV_DOM%%/ss/enable %%ChuntUser%% chunt",
+    "/domain/%%DEV_DOM%%/ss/enable %%4.Number%% ml",
+    "/domain/%%DEV_DOM%%/ss/activate  %%4.Number%% ml line_count = 4",
     "/domain/%%DEV_DOM%%/ss/activate %%ChuntUser%% chunt mode = delay_group, window_shift_timeout = 3, numbers = %%ChuntGroup%%, queue_strategy = drop, queue_size= 3"
   ],
   "PostConf": [
     "/domain/%%DEV_DOM%%/ss/deactivate %%ChuntUser%% chunt",
-    "/domain/%%DEV_DOM%%/ss/disable %%ChuntUser%% chunt"
+    "/domain/%%DEV_DOM%%/ss/disable %%ChuntUser%% chunt",
+    "/domain/%%DEV_DOM%%/ss/deactivate %%4.Number%% ml",
+    "/domain/%%DEV_DOM%%/ss/disable %%4.Number%% ml"
   ],
   "Tests": [
     {
