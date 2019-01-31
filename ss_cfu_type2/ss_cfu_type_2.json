@@ -212,12 +212,12 @@
       "TestProcedure": [
         {
           "SendSSHCommand": [
-            "/domain/%%DEV_DOM%%/ss/activate %%0.Number%% cfu_type2 number = %%1.Number%%, timeout = 2",
-            "/domain/%%DEV_DOM%%/ss/activate %%1.Number%% cfu_type2 number = %%2.Number%%, timeout = 2",
-            "/domain/%%DEV_DOM%%/ss/activate %%2.Number%% cfu_type2 number = %%3.Number%%, timeout = 2",
-            "/domain/%%DEV_DOM%%/ss/activate %%3.Number%% cfu_type2 number = %%4.Number%%, timeout = 2",
-            "/domain/%%DEV_DOM%%/ss/activate %%4.Number%% cfu_type2 number = %%5.Number%%, timeout = 2",
-            "/domain/%%DEV_DOM%%/ss/activate %%5.Number%% cfu_type2 number = %%6.Number%%, timeout = 2"
+            "/domain/%%DEV_DOM%%/ss/activate %%0.Number%% cfu_type2 number = %%1.Number%%",
+            "/domain/%%DEV_DOM%%/ss/activate %%1.Number%% cfu_type2 number = %%2.Number%%",
+            "/domain/%%DEV_DOM%%/ss/activate %%2.Number%% cfu_type2 number = %%3.Number%%",
+            "/domain/%%DEV_DOM%%/ss/activate %%3.Number%% cfu_type2 number = %%4.Number%%",
+            "/domain/%%DEV_DOM%%/ss/activate %%4.Number%% cfu_type2 number = %%5.Number%%",
+            "/domain/%%DEV_DOM%%/ss/activate %%5.Number%% cfu_type2 number = %%6.Number%%"
           ]
         },
         {
