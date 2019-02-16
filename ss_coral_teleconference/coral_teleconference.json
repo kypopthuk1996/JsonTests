@@ -76,27 +76,35 @@
           "StartUA": [
             {
               "Type": "User",
-              "UserId": 1,
-              "Name": "RECV_ADD_TO_ROOM",
-              "Commands": [
-                {
-                  "SourceFile": "ss_coral_teleconference/uas_recv_re_invite.xml",
-                  "Options": "-m 1",
-                  "SippType": "uas",
-                  "NeedAuth": true,
-                  "Timeout": "30s"
-                }
-              ]
-            },
-            {
-              "Type": "User",
               "UserId": 3,
+              "BackGround": true,
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*%%3.Number%%# -set CDPNDOM %%DEV_DOM%% -d 6000",
+                  "Options": "-m 1 -set CDPN *470*%%3.Number%%# -set CDPNDOM %%DEV_DOM%% -d 20000",
                   "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "30s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Sleep": 3
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "User",
+              "UserId": 1,
+              "Name": "RECV_ADD_TO_ROOM",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_bye.xml",
+                  "Options": "-m 1",
+                  "SippType": "uas",
                   "NeedAuth": true,
                   "Timeout": "30s"
                 }
@@ -108,8 +116,8 @@
               "Name": "ADD_USER_TO_ROOM",
               "Commands": [
                 {
-                  "SourceFile": "ss_coral_teleconference/uac_unattended_succ_transfer.xml",
-                  "Options": "-m 1 -set FIRST_CDPN %%1.Number%% -set SECOND_CDPN *472*%%3.Number%%# -set CDPNDOM %%DEV_DOM%% -set CGPNDOM %%DEV_DOM%%",
+                  "SourceFile": "simple_ua/uac_recv_bye.xml",
+                  "Options": "-m 1 -set CDPN *473*%%3.Number%%*%%1.Number%%# -set CDPNDOM %%DEV_DOM%% -set CGPNDOM %%DEV_DOM%%",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -428,8 +436,8 @@
             "/domain/%%DEV_DOM%%/ss/activate %%3.Number%% teleconference",
             "/domain/%%DEV_DOM%%/ss/activate %%0.Number%% teleconference",
             "/domain/%%DEV_DOM%%/lists/declare 777 teleconference test %%1.Number%% %%2.Number%%",
-            "/domain/%%DEV_DOM%%/teleconference/declare 999 room_list",
-            "/domain/%%DEV_DOM%%/teleconference/group-add 999 777"
+            "/domain/%%DEV_DOM%%/teleconference/declare 996 room_list",
+            "/domain/%%DEV_DOM%%/teleconference/group-add 996 777"
           ]
         },
         {
@@ -472,7 +480,7 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_send_bye.xml",
-                  "Options": "-m 1 -set CDPN *470*999# -set CDPNDOM %%DEV_DOM%% -d 6000",
+                  "Options": "-m 1 -set CDPN *470*996# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
@@ -482,7 +490,7 @@
           ]
         },
         {
-          "Sleep": 3
+          "Sleep": 1
         },
         {
           "StartUA": [
@@ -493,14 +501,85 @@
               "Commands": [
                 {
                   "SourceFile": "simple_ua/uac_recv_bye.xml",
-                  "Options": "-m 1 -set CDPN *478*999*777# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *478*996*777# -set CDPNDOM %%DEV_DOM%% -pause_msg_ign",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
                 },
                 {
                   "SourceFile": "simple_ua/uac_recv_bye.xml",
-                  "Options": "-m 1 -set CDPN *479*999*777# -set CDPNDOM %%DEV_DOM%%",
+                  "Options": "-m 1 -set CDPN *479*996*777# -set CDPNDOM %%DEV_DOM%% -pause_msg_ign",
+                  "SippType": "uac",
+                  "NeedAuth": true,
+                  "Timeout": "30s"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/teleconference/remove 996",
+            "/domain/%%DEV_DOM%%/lists/remove 777"
+          ]
+        }
+      ]
+    },
+    {
+      "Name": "check_no_asnswer_timer",
+      "Description": "Создается конференция с автообзвоном и установленным таймером no_answer_timeout. По истечению таймера должен послаться ",
+      "TestProcedure": [
+        {
+          "SendSSHCommand": [
+            "/domain/%%DEV_DOM%%/ss/activate %%3.Number%% teleconference",
+            "/domain/%%DEV_DOM%%/lists/declare 777 teleconference test %%1.Number%% %%2.Number%%",
+            "/domain/%%DEV_DOM%%/teleconference/declare 999 room_list",
+            "/domain/%%DEV_DOM%%/teleconference/group-add 999 777",
+            "/domain/%%DEV_DOM%%/teleconference/property-set 999 no_answer_timeout 5",
+            "domain/dima/teleconference/property-set 999 auto_collect true"
+          ]
+        },
+        {
+          "StartUA": [
+            {
+              "Type": "User",
+              "UserId": 1,
+              "BackGround": true,
+              "Name": "UAS_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1",
+                  "SippType": "uas",
+                  "NeedAuth": true,
+                  "Timeout": "30s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 2,
+              "BackGround": true,
+              "Name": "UAS_RECV_CANCEL",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uas_recv_cancel.xml",
+                  "Options": "-m 1",
+                  "SippType": "uas",
+                  "NeedAuth": true,
+                  "Timeout": "30s"
+                }
+              ]
+            },
+            {
+              "Type": "User",
+              "UserId": 3,
+              "BackGround": true,
+              "Name": "CREATE_ROOM",
+              "Commands": [
+                {
+                  "SourceFile": "simple_ua/uac_send_bye.xml",
+                  "Options": "-m 1 -set CDPN *470*999# -set CDPNDOM %%DEV_DOM%% -d 6000",
                   "SippType": "uac",
                   "NeedAuth": true,
                   "Timeout": "30s"
