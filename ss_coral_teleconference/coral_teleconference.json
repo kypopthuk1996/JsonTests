@@ -574,7 +574,6 @@
             {
               "Type": "User",
               "UserId": 3,
-              "BackGround": true,
               "Name": "CREATE_ROOM",
               "Commands": [
                 {
